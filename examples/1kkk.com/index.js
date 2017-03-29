@@ -1,4 +1,4 @@
-const axios = require('../../src/utils/axios');
+const axios = require('../../utils/axios');
 
 
 axios.get('http://www.1kkk.com/ch1-469797-p6/imagefun.ashx', {

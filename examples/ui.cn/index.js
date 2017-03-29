@@ -1,4 +1,4 @@
-const Task = require('../../src/utils/task');
+const Task = require('../../utils/task');
 
 var task = new Task({
     parseImageUrl(html) {

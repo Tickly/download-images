@@ -3,7 +3,7 @@ const axios = require('axios'),
     fs = require('fs');
 
 
-const helper = require('../../src/utils/helper');
+const helper = require('../../utils/helper');
 
 
 
