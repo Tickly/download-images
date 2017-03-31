@@ -115,7 +115,9 @@ module.exports = function ({
                         url: urlImage,
                         referer: urlPage,
                     });
+                    console.log(urlImage);
                 });
+                console.log(urlPage);
 
                 if (canNext(page, html, Queue.length)) {
                     fetch(page + 1);
