@@ -12,6 +12,8 @@ class DownloadItem {
 class DownloadQueue {
     constructor() {
         this.Queue = [];
+        // todo 有个字段表示下载队列还会有数据添加
+        // todo 有个字段控制下载间隔
     }
 
     // 开始任务

@@ -105,6 +105,8 @@ module.exports = function ({
         // console.log('fetch page:', page);
         var urlPage = getUrl(page)
 
+        console.log('抓取网址', urlPage);
+
         onFetchPageChange(page);
         axios.get(urlPage)
             .then(html => {
@@ -139,17 +141,19 @@ module.exports = function ({
 
     // 自动下载任务
     function downloadTask() {
-        console.log(Queue.length);
+        console.log('下载队列长度', Queue.length);
         if (Queue.length > 0) {
             // 如果队列里有数据，立刻处理
             let item = Queue.shift();
             onDownloadChange(item);
-            download(item).then(a => {
-                // 下载完一个之后，立刻处理下一个
-                setTimeout(function () {
-                    downloadTask();
-                }, 0);
-            })
+
+            download(item)
+                .then(a => {
+                    // 下载完一个之后，立刻处理下一个
+                    setTimeout(function () {
+                        downloadTask();
+                    }, 0);
+                })
         } else {
             // 如果下载队列里面已经没有要下载的任务
             // 那先判断是否还在执行抓取任务
@@ -168,14 +172,28 @@ module.exports = function ({
 
 
     // 下载文件，返回一个promise
-    function download({ page, url, referer }) {
+    function download({
+        page,
+        url,
+        referer
+    }) {
         var promise = new Promise((resolve, reject) => {
-            var filename = parseFilename({ url, page });
+            var filename = parseFilename({
+                url,
+                page
+            });
 
-            helper.getArrayBuffer(url, { headers: { referer } })
+            console.log('保存文件名', filename);
+
+            helper.getArrayBuffer(url, {
+                    headers: {
+                        referer
+                    }
+                })
                 .then(arraybuffer => {
                     var filepath = path.join(imageDir, filename);
-                    helper.writeFile(filepath, arraybuffer)
+                    helper
+                        .writeFile(filepath, arraybuffer)
                         .then(path => {
                             resolve(path);
                         }).catch(err => {
@@ -212,7 +230,9 @@ module.exports = function ({
         console.log('结束下载任务');
     }
     // 下载任务change
-    function onDownloadChange({ url }) {
+    function onDownloadChange({
+        url
+    }) {
         console.log(`正在下载${url}`)
     }
 
