@@ -5,14 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"babel src/main.js --out-file dist/app.js --watch",
+    "dev": "babel src/main.js --out-file dist/app.js --watch",
     "start": "node src/main.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.15.3",
-    "babel-cli": "^6.24.0",
-    "babel-preset-env": "^1.2.1"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
