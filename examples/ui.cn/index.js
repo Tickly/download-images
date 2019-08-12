@@ -19,7 +19,6 @@ var task = new Task({
     hasNext(page, html, len) {
         return (html.indexOf('\'next\'') > -1)
     },
-    MaxPage: 0,
     getUrl(page) {
         return `http://www.ui.cn/list.html?p=${page}&tag=0&r=edit&subcatid=2&catid=0`
     },
