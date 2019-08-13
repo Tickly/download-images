@@ -3,7 +3,7 @@ const $ = require('cheerio')
 const path = require('path')
 
 var task = new Task({
-  dir: path.resolve(__dirname, 'imgs'),
+  downloadPath: path.resolve(__dirname, 'imgs'),
   parseImageUrl (html) {
     return [
       ...$(html).find('#container img').map((i, e) => $(e).attr('src')).toArray(),

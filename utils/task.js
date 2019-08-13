@@ -51,7 +51,6 @@ class ImageDownloader {
 
     Object.assign(this, defaultOptions, options)
 
-
     // 这个用来保存待处理的队列
     this.downloadQueue = new DownloadQueue()
   }
@@ -77,7 +76,7 @@ class ImageDownloader {
     }
 
     // 到这里开始执行
-    mkdir(this.dir).then(() => {
+    mkdir(this.downloadPath).then(() => {
       // 接下来开始任务，先抓取所有地址
 
       // 设置状态
@@ -166,7 +165,7 @@ class ImageDownloader {
         page,
         pageIndex
       });
-      let filepath = path.join(this.dir, filename);
+      let filepath = path.join(this.downloadPath, filename);
 
       helper.getArrayBuffer(url, {
         headers: {
